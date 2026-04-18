@@ -3,8 +3,12 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
+import os
+
 def train_model():
-    df = pd.read_csv("netflix_customer_churn.csv")
+    ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    CSV_PATH = os.path.join(ROOT_DIR, "data", "netflix_customer_churn.csv")
+    df = pd.read_csv(CSV_PATH)
 
     if 'customer_id' in df.columns:
         df = df.drop('customer_id', axis=1)
