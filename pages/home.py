@@ -3,7 +3,7 @@ import sys, os
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 from pages.theme import inject_theme, page_header, section_label
-from model import train_model
+from logic.churn_model import train_model
 import plotly.graph_objects as go
 
 inject_theme()

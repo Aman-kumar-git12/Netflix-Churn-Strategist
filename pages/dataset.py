@@ -13,7 +13,7 @@ page_header(
     "Browse the raw Netflix customer churn dataset used to train and evaluate the model."
 )
 
-df = pd.read_csv("netflix_customer_churn.csv")
+df = pd.read_csv("data/netflix_customer_churn.csv")
 
 # ── Summary stats ──────────────────────────────────────────────────────────────
 section_label("Dataset Overview", margin_top="0")
