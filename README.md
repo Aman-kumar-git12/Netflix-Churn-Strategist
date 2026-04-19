@@ -12,142 +12,118 @@
   
   <br>
   
-  **[Live Demo](https://netflix-churn-ai.streamlit.app/)** • **[Logic Tier](file:///Users/vipulsharma/Desktop/Netflix-Churn-Strategist/logic/)** • **[UI Pages](file:///Users/vipulsharma/Desktop/Netflix-Churn-Strategist/pages/)**
+  **[Live Demo](https://netflix-churn-ai.streamlit.app/)** • **[Logic Tier Code](./logic/)** • **[UI Pages Code](./pages/)**
 </div>
 
 ---
 
-## 📌 Table of Contents
-1. [Executive Vision](#-executive-vision)
-2. [Data Engineering & Schema](#-data-engineering--schema)
-3. [The Intelligence Engine](#-the-intelligence-engine)
-    - [The ML Layer (Predictive Analytics)](#the-ml-layer-predictive-analytics)
-    - [The Agentic Layer (GenAI reasoning)](#the-agentic-layer-genai-reasoning)
-    - [The Memory Layer (RAG & RL feedback)](#the-memory-layer-rag--rl-feedback)
-4. [Operational Workflow](#-operational-workflow)
-5. [Enterprise-Grade Features](#-enterprise-grade-features)
-6. [Installation & Strategic Setup](#-installation--strategic-setup)
-7. [Roadmap & Team](#-roadmap--team)
+## 📖 1. Overview
+The **Netflix Customer Churn Strategist** is an end-to-end intelligence ecosystem designed to solve the "Retention Gap" in digital streaming platforms.
+While traditional churn systems stop at predicting risk, this project acts as an **Agentic Co-pilot**. It uses predictive machine learning to flag high-risk customers, and Generative AI (LLaMA 3.3) paired with RAG to autonomously draft personalized, corporate-aligned retention strategies in milliseconds. Our solution transforms passive analytics into active, revenue-saving business operations.
 
----
+## 🎯 2. Problem Statement
+**The Retention Flaw in Modern Enterprises:**
+Most churn management systems are purely **Passive**. They provide a risk score (e.g., "Customer X is 80% likely to churn") but leave the human manager to guess the remedy. This manual intervention delays action, relies on guesswork, and leads to generic marketing that fails. 
 
-## 🚀 Executive Vision
+This project automates the entire pipeline: from diagnosing the exact mathematical cause of churn to executing a highly personalized, targeted retention campaign.
 
-The **Netflix Churn Strategist** is an end-to-end intelligence ecosystem designed to solve the **"Retention Gap"**—the time lost between identifying a churn risk and taking tactical action. 
+## 🚀 3. Features
+- **Deterministic Churn Prediction:** Path-tracing decision trees to find the exact factor driving a user away.
+- **RAG-Powered Knowledge Base:** Prevents generic AI responses by grounding strategies in corporate playbooks (PDFs via ChromaDB).
+- **Self-Refining Multi-Agent Team:** LangGraph orchestrates a Researcher, Architect, and Critic agent to draft, review, and perfect executive-level emails.
+- **Enterprise Dashboard:** A reactive, professional UI built on Streamlit with tabs for Batch Orchestration and AI Auditing.
+- **Reinforcement Learning Feedback:** Learns from campaign failures via historical logs to constantly improve success rates.
 
-Unlike static dashboards, this platform acts as an **Agentic Co-pilot**, using high-precision machine learning to flag risks and specialized Generative AI agents to execute sub-second retention strategies based on corporate playbooks.
+## 🧠 4. Tech Stack
+- **Languages / Core:** Python 3
+- **Predictive ML:** Scikit-Learn, Pandas, NumPy
+- **Generative AI Engine:** LLaMA-3.3 70B (via Groq API for near-zero latency)
+- **Agentic Orchestration:** LangChain, LangGraph
+- **Vector Database (RAG):** ChromaDB, HuggingFace Embeddings (`all-MiniLM-L6-v2`)
+- **Frontend / UI:** Streamlit
 
----
+## 📊 5. Dataset
+- **Source:** Simulated Enterprise Netflix Telemetry Data
+- **Size:** 5,000+ Customer Records
+- **Features:** 12 High-Impact Attributes (e.g., `subscription_type`, `monthly_fee`, `watch_hours`, `last_login_days`, `favorite_genre`)
+- **Preprocessing steps:**
+  - Dynamic removal of strict identifiers (`customer_id`).
+  - Categorical Variable Encoding (One-Hot Encoding via `pd.get_dummies`).
+  - Strict formatting for ML pipeline consistency preventing test-set leakage.
 
-## 📊 Data Engineering & Schema
+## ⚙️ 6. Model & Approach
+- **Algorithms used:**
+  - Regularized Decision Tree Classifier
+- **Why this model?**
+  While Neural Networks are powerful, Marketing teams require **Explainability**. Decision Trees offer absolute transparency. We use programmatic Path Tracing to calculate Probability Deltas at each node, giving our AI agents the exact mathematical reason a user is leaving, rather than having the LLM "hallucinate" a reason.
+- **Training process:**
+  - 80/20 Train-Test Stratified Split.
+  - Hyperparameter tuning (`max_depth=10`, `min_samples_leaf=2`) for generalization.
 
-We process **5,000+ labelled customer records** across 12 high-impact features. This dataset is centralized in the `data/` tier for clean, modular access.
+## 📈 7. Results & Metrics
+*Evaluated on the 20% holdout test set.*
 
-### The Attribute Dictionary
-| Feature | Type | Business Significance |
-| :--- | :--- | :--- |
-| `subscription_type` | Categorical | Plan tier (Basic/Standard/Premium) — impacts LTV. |
-| `monthly_fee` | Numerical | Direct price sensitivity metric. |
-| `watch_hours` | Numerical | Primary engagement signal (Monthly total). |
-| `last_login_days` | Numerical | The strongest predictor: recency is the first sign of churn. |
-| `avg_watch_time_per_day`| Numerical | Habitual engagement depth. |
-| `favorite_genre` | Categorical | Used for content-driven personalized offers. |
-| ... | ... | *Full 12-feature schema documented in [dataset.py](file:///Users/vipulsharma/Desktop/Netflix-Churn-Strategist/pages/dataset.py).* |
+| Model | Accuracy | Precision | Recall | F1 Score |
+|------|----------|----------|--------|----------|
+| Decision Tree Classifier | 97.9% | 98.2% | 97.5% | 97.8% |
 
----
+**Business Impact:** High precision ensures we do not waste aggressive discounts on users who were never going to churn (minimizing false positives), saving critical revenue.
 
-## 🧠 The Intelligence Engine
+## 📷 8. Demo
+*Add screenshots of your dashboard here to impress recruiters.*
+- ✅ **Model Dashboard:** Displays real-time feature distributions and probability scores.
+- ✅ **AI Strategist View:** Generating personalized, non-cliché emails via Multi-Agent logic.
 
-### The ML Layer (Predictive Analytics)
-We leverage a **Regularized Decision Tree Classifier** (`logic/churn_model.py`). 
-- **Rationale**: While ensemble models (like LightGBM) offer high accuracy, **Decision Trees** provide the path-based explainability required for Marketing teams to justify "Why" a user is being targeted.
-- **Tuning**: Configured with `max_depth=10` and `min_samples_leaf=2` to ensure high accuracy (~97.9%) without overfitting to outlier behaviors.
+## 🛠️ 9. Installation & Setup
 
-### The Agentic Layer (GenAI Reasoning)
-The platform utilizes **Groq-accelerated LLaMA-3 (70B)** within `logic/ai_agent.py`.
-- **System Personas**: The system intelligently triggers a **Retention Agent** (for risk recovery) or an **Expansion Agent** (for upselling safe, high-tier users).
-- **JSON Rigor**: Agents are strictly constrained to a JSON schema to allow the UI to parse strategies into actionable components (Recommended Action, Email Draft, Promo Code).
-
-### The Memory Layer (RAG & RL Feedback)
-- **RAG (Retrieval-Augmented Generation)**: We utilize **ChromaDB** and `sentence-transformers` to search `data/retention_knowledge_base.pdf`. This prevents AI hallucinations and ensures every strategy is backed by real marketing playbooks.
-- **RL Feedback Loop**: The system self-corrects via `data/agent_feedback_log.json`. If a user labels a strategy as "Failed," the AI Agent sees that failure in its next prompt and dynamically adjusts its tactics.
-
----
-
-## ⚙️ Operational Workflow
-
-Trace a customer's journey from data input to campaign dispatch:
-
-```mermaid
-sequenceDiagram
-    participant D as data/netflix_customer_churn.csv
-    participant P as logic/churn_model.py
-    participant A as logic/ai_agent.py
-    participant R as logic/rag_system.py
-    participant U as Streamlit UI
-
-    D->>P: Load Batch/Customer Profile
-    P->>P: Calculate Churn Risk (%)
-    P->>A: Pass Churn Score + Attributes
-    A->>R: Query Context-Specific Strategies
-    R-->>A: Retrieve Strategy PDF Snippets
-    A->>A: Reasoning & Prompt Synthesis
-    A->>U: Render JSON Strategy + Email
-    U->>U: Simulated Dispatch (SendGrid API Hook)
-```
-
----
-
-## 💎 Enterprise-Grade Features
-
-- **AI Data Auditor**: Natural language interface (`pages/ai_auditor.py`) allowing non-technical managers to "Chat with the Database."
-- **Batch Campaign Agent**: Automated orchestration of bulk retention interventions for hundreds of users simultaneously.
-- **Persistent Memory**: Uses browser `LocalStorage` to ensure private, persistent auditor sessions for every user.
-- **Modular Tiering**: Absolute separation of `/logic`, `/data`, `/utils`, and `/pages` for professional evaluation.
-
----
-
-## 🔧 Installation & Strategic Setup
-
-### 1. Repository Initialization
 ```bash
-git clone <repo-url>
+git clone https://github.com/samaysamrat/Netflix-Churn-Strategist.git
 cd Netflix-Churn-Strategist
-python3 -m venv .venv
-source .venv/bin/activate
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 2. Security & API Keys
-Create a `.env` file for **Groq LLaMA-3** orchestration:
+#### Security Setup (.env)
+You must set your Groq API key to run the Large Language Models.
 ```env
-GROQ_API_KEY=your_key_here
+GROQ_API_KEY=your_groq_api_key_here
 ```
 
-### 3. Execution
+## ▶️ 10. How to Run
+
+Launch the Enterprise Application:
 ```bash
 streamlit run app.py
 ```
 
----
+## 📂 11. Project Structure
 
-## 🛣️ Roadmap & Team
+```text
+Netflix-Churn-Strategist/
+│── data/                     # CSV datasets and PDF Playbooks
+│── logic/                    # Core Engine
+│   ├── ai_agent.py           # LangGraph Multi-Agent Team
+│   ├── churn_model.py        # Scikit-Learn Path Tracing
+│   └── rag_system.py         # ChromaDB Vector Store
+│── notebooks/                # EDA and ML Experiments
+│── pages/                    # Streamlit Dashboard Views
+│── utils/                    # Helper Functions
+│── app.py                    # Application Entry Point
+│── requirements.txt          # Dependencies
+```
 
-### Strategic Roadmap
-- [ ] **Dynamic SQL Connector**: Connect directly to Snowflake/Postgres instead of CSV.
-- [ ] **Live SendGrid Integration**: Real-world automated email triggers.
-- [ ] **Fine-Tuning**: Training a custom LLaMA-3 adapter on historical Netflix marketing data.
+## 👥 12. Team Members
 
-### Leadership Team
-| Member | Role |
-| :--- | :--- |
-| **Vipul Sharma** | Chief ML Architect & Optimization Lead |
-| **Lokendra Singh** | Data Systems & Operations Engineering |
-| **Samay Samrat** | Infrastructure Deployment & DevOps |
-| **Aman Kumar** | Data Engineering & Acquisition |
+- **Vipul Sharma** – Chief ML Architect & Optimization Lead
+- **Lokendra Singh** – Data Systems & Operations Engineering
+- **Samay Samrat** – Infrastructure Deployment & DevOps
+- **Aman Kumar** – Data Engineering & Acquisition
 
----
+## 🔮 13. Future Improvements
+- **Real-Time RL:** Continually fine-tuning the Decision Tree based on which strategies the Manager actually approves in the Auditor page.
+- **Global Scaling:** Moving from local ChromaDB to a cloud-native vector store like Pinecone for multi-region deployment.
+- **Multi-Modal Agents:** Generating personalized video previews directly within emails for at-risk users.
 
-<div align="center">
-    <p><i>The Ultimate Solution for Predictive Retention & Agentic MarOps.</i></p>
-</div>
+## 📜 14. License
+MIT License
